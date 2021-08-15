@@ -3,7 +3,7 @@ local module = {}
 local TS = game:GetService("TweenService")
 
 function module:FadeOut(frame)
-	for i,v in pairs(frame:GetDescendants()) do
+	for _,v in pairs(frame:GetDescendants()) do
 		if (v:IsA("Frame") or v:IsA("TextBox")) then
 		local tween = TS:Create(v, TweenInfo.new(1), {BackgroundTransparency = 1})
 		tween:Play()
@@ -25,7 +25,7 @@ end
 function module:FadeIn(frame)
 	frame.Visible = true
 	wait(1)
-	for i,v in pairs(frame:GetDescendants()) do
+	for _,v in pairs(frame:GetDescendants()) do
 		if (v:IsA("Frame") or v:IsA("TextBox")) then
 			local tween = TS:Create(v, TweenInfo.new(1), {BackgroundTransparency = 0})
 			tween:Play()
