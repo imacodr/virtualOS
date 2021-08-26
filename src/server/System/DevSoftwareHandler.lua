@@ -4,7 +4,7 @@ local HttpService = game:GetService("HttpService")
 local MarketplaceService = game:GetService("MarketplaceService")
 
 local Constants = require(script.Parent.Utils.Constants)
-local LaunchService = require(script.Parent.LaunchSoftware)
+local LaunchService = require(script.Parent.Services.LaunchService)
 
 local PlaceId = game.PlaceId
 local PlaceInfo = MarketplaceService:GetProductInfo(PlaceId)
@@ -52,6 +52,8 @@ function module:init(player, ui)
 		cloned.Parent = AppsPath
 		cloned.Size = UDim2.new(0.191, 0,0.834, 0)
 		cloned.AppName.Text = software.name
+		cloned.BorderSizePixel = 0
+		cloned.AppName.TextTransparency = 1
 		cloned.Visible = true
 		cloned.MouseButton1Click:Connect(function()
 			LaunchService:StartSoftware(player, ui, software)
