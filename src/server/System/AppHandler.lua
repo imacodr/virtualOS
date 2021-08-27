@@ -41,11 +41,20 @@ function module:initOnStart(player, ui)
 	local content = game.Players:GetUserThumbnailAsync(userId, thumbType, thumbSize)
 	
 	ui.System.Screen.HomeScreen.UserPicture.Image = content
+	ui.System.Screen.HomeScreen.UserPicture.MouseButton1Click:Connect(function()
+		ui.System.Screen.HomeScreen.Visible = false
+		ui.System.Screen.AccountSettings.Visible = true
+	end)
+	ui.System.Screen.AccountSettings.Close.MouseButton1Click:Connect(function()
+		ui.System.Screen.HomeScreen.Visible = true
+		ui.System.Screen.AccountSettings.Visible = false
+	end)
 	self:LoadApps(player, ui, account)
 	
 	FadeHandler:FadeOut(ui.System.Screen.SystemSetup)
 	ui.System:TweenPosition(UDim2.new(0.156, 0,1, 0), 0.3)
 	FadeHandler:FadeIn(ui.System.Screen.HomeScreen)
+
 	
 end
 
