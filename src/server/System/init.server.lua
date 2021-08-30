@@ -1,4 +1,3 @@
-local AppHandler = require(script.AppHandler)
 local ToolService = require(script.Services.ToolService)
 
 game.Players.PlayerAdded:Connect(function(player)
@@ -7,9 +6,16 @@ game.Players.PlayerAdded:Connect(function(player)
 		wait(4)
 	until player and player.PlayerGui
 
+	local clonedGui = script.Gui.PadSystem:Clone()
+	clonedGui.Parent = player.PlayerGui
+
+	script:SetAttribute("firstStart", true)
+
+	print(script:GetAttributes())
+
 
 	ToolService:LoadTool(player, player.PlayerGui.PadSystem)
 	
-    AppHandler:initOnStart(player, player.PlayerGui.PadSystem)
+
 
 end)

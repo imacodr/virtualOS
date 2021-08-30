@@ -29,9 +29,13 @@ function module:initOnStart(player, ui)
 	local account = getAccount(player)
 	ui.Enabled = true
 	ui.System:TweenPosition(UDim2.new(0.156, 0,0.224, 0), 0.3)
-	ui.System.Screen.SystemSetup.ImageLabel:TweenPosition(UDim2.new(0.433, 0,0.344, 0), "Out", "Bounce", 0.5, true)
+	ui.System.Screen.SystemSetup.ImageLabel:TweenPosition(UDim2.new(0.435, 0,0.342, 0), "Out", "Bounce", 0.5, true)
 	wait(3)
-	ui.System.Screen.SystemSetup.ImageLabel:TweenSizeAndPosition(UDim2.new(0.402, 0,0.26, 0), UDim2.new(0.367, 0,0.36, 0))
+	ui.System.Screen.SystemSetup.ImageLabel:TweenSizeAndPosition(UDim2.new(0.094, 0,0.208, 0), UDim2.new(0.373, 0,0.391, 0))
+
+	ui.System.TurnOff.MouseButton1Click:Connect(function()
+		player.Character.Humanoid:UnequipTools()
+	end)
 	FadeHandler:FadeIn(ui.System.Screen.SystemSetup)
 	wait(3)
 	
@@ -52,8 +56,7 @@ function module:initOnStart(player, ui)
 	self:LoadApps(player, ui, account)
 	
 	FadeHandler:FadeOut(ui.System.Screen.SystemSetup)
-	ui.System:TweenPosition(UDim2.new(0.156, 0,1, 0), 0.3)
-	FadeHandler:FadeIn(ui.System.Screen.HomeScreen)
+	ui.System.Screen.HomeScreen.Visible = true
 
 	
 end
@@ -81,9 +84,6 @@ function module:LoadApps(player, ui, account)
 	end
 	
 	DevSoftwareHandler:init(player, ui)
-
-    
-
 end
 
 return module
